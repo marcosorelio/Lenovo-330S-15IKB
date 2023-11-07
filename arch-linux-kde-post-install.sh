@@ -11,6 +11,8 @@
 # pacman -S reflector
 # reflector --latest 5 --country "Brazil" --sort rate --save /etc/pacman.d/mirrorlist
 
+# https://raw.githubusercontent.com/marcosorelio/Arch_Lenovo_330S-15IKB/main/arch-linux-kde-post-install.sh
+
 systemctl enable --now bluetooth
 pacman -Rns vim
 
@@ -36,7 +38,10 @@ systemctl enable --now reflector.service
 #Install tools
 yay -Sy Spectacle
 yay -Sy btop
-yay -Sy virtualbox
+
+yay -Sy virtualbox virtualbox-host-dkms linux-lts-headers
+#Fix Error start virtual box
+modprobe vboxdrv
 
 #Install docker
 yay -Ss docker-compose
