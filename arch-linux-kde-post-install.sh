@@ -38,7 +38,6 @@ systemctl enable --now reflector.service
 #Install tools
 yay -Sy Spectacle
 yay -Sy btop
-
 yay -Sy virtualbox virtualbox-host-dkms linux-lts-headers
 #Fix Error start virtual box
 modprobe vboxdrv
