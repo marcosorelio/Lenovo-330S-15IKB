@@ -1,57 +1,49 @@
 #!/bin/bash
 ######################
 #@Autor: Marcos Orelio
-#@Date: 2023-11-106
+#@Date: 2023-11-6
 #@Version: 1.0.0
+#@URL: https://raw.githubusercontent.com/marcosorelio/Arch_Lenovo_330S-15IKB/main/arch-linux-kde-post-install.sh
 #######################
 
-## Inicial config
-
-# reflector
-# pacman -S reflector
-# reflector --latest 5 --country "Brazil" --sort rate --save /etc/pacman.d/mirrorlist
-
-# https://raw.githubusercontent.com/marcosorelio/Arch_Lenovo_330S-15IKB/main/arch-linux-kde-post-install.sh
-
-systemctl enable --now bluetooth
-pacman -Rns vim
+#Inicial config
+sudo systemctl enable --now bluetooth
 
 #Install git
-pacman -Syu
-pacman -S --needed git base-devel
+yes | sudo pacman -Syu
+yes | sudo pacman -Sy --needed git base-devel
 git config --global user.name "marcosorelio"
 git config --global user.email bw.marcos@gmail.com
 
 #Install Yay
-pacman -Syyu
-cd /tmp
+cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
 #Install Reflector
-yay -Sy reflector
-cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
-echo '--country "United States"' >> /etc/xdg/reflector/reflector.conf
-systemctl enable --now reflector.service
+yes | yay -Sy reflector
+reflector --latest 5 --country "United States" --protocol https --sort rate --save /etc/sudo pacman.d/mirrorlist
+#cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
+#echo '--country "United States"' >> /etc/xdg/reflector/reflector.conf
+#systemctl enable --now reflector.service
 
 #Install tools
-yay -Sy Spectacle
-yay -Sy btop
-yay -Sy virtualbox virtualbox-host-dkms linux-lts-headers
+yes | yay -Sy spectacle
+yes | yay -Sy btop
+yes | yay -Sy virtualbox virtualbox-host-dkms linux-lts-headers
 #Fix Error start virtual box
 modprobe vboxdrv
 
 #Install docker
-yay -Ss docker-compose
-yay -Sy docker docker-compose
+yes | yay -Sy docker docker-compose
 groupadd docker
 usermod -aG docker $USER
 systemctl enable --now docker.service
 
 #Install asdf lib tools
-yay -S asdf-vm
-echo "source /opt/asdf-vm/asdf.sh" >> ~/.bashrc 
+yes | yay -Sy asdf-vm
+echo "source /opt/asdf-vm/asdf.sh" >> ~/.bashrc
 source ~/.bashrc
 
 #asdf install lib Java
@@ -61,7 +53,7 @@ asdf global java openjdk-21
 java -version
 
 #Install flatpak
-yay -Sy flatpak
+yes | yay -Sy flatpak
 
 flatpak install flathub org.mozilla.firefox
 flatpak install flathub org.libreoffice.LibreOffice
@@ -76,3 +68,8 @@ flatpak install flathub com.google.AndroidStudio
 flatpak install flathub org.chromium.Chromium
 flatpak install flathub com.notepadqq.Notepadqq
 flatpak install flathub org.kde.okular
+
+#Clean install package
+yes | sudo pacman -Rns vim
+yes | sudo pacman -Scc
+sudo rm -rf ~/yay
