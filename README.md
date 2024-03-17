@@ -1,4 +1,5 @@
 
+## Configuração Laptop
 |Feature|Description|
 |---|---|
 |Processor|• 8 × Intel® Core™ i7-8550U CPU @ 1.80GHz|
