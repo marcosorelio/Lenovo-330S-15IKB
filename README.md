@@ -11,6 +11,3 @@
 |I/O port|• USB 3.0 × 2 <br>• Combo audio jack × 1 <br>• Type-C (USB 3.1) × 1 <br>• Memory card slot (SD/SDHC/SDXC/MMC) <br>• HDMI port × 1|
 |Battery|• Li-ion battery pack, DIS: 3 cells, 52.5 Wh, UMA: 2 cells,30 Wh / 3 cells, 52.5 Wh|
 |AC adapter|• 20 V DC, DIS: 65 W, UMA: 45 W / 65 W|
-
-Font:
-https://download.lenovo.com/consumer/mobiles_pub/330s-14ikb_330s-14ikbx_330s-15ikb_330s-15ikbx_hmm_201903.pdf
